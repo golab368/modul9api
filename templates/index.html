@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Currency Page </title>
+</head>
+
+<body>
+
+
+    <style>
+        html,
+        body {
+            background-color: #2A2B2A;
+            font-family: Helvetica;
+        }
+
+        div {
+            -webkit-box-shadow: -5px 2px 42px -4px rgba(0, 0, 0, 0.75);
+            -moz-box-shadow: -5px 2px 42px -4px rgba(0, 0, 0, 0.75);
+            box-shadow: -5px 2px 42px -4px rgba(0, 0, 0, 0.75);
+        }
+
+        .converter {
+            position: relative;
+            display: block;
+            margin: 50px auto;
+            background: #888484;
+            color: rgb(196, 164, 164);
+            padding: 40px 20px;
+            border-radius: 10px;
+            width: 725px;
+        }
+
+        .converter #base,
+        #to {
+            text-align: center;
+            display: inline-block;
+            font-size: 18px;
+            padding-top: 15px;
+        }
+
+        .converter .item {
+            width: 45%;
+        }
+
+        .converter #amount,
+        #calculation {
+            display: inline-block;
+            text-align: center;
+            font-size: 20px;
+            vertical-align: sub;
+        }
+
+        .converter #last_update {
+            position: absolute;
+            right: 10px;
+            bottom: 7px;
+            font-size: 11px;
+        }
+
+        .currency-information {
+            background-color: #616161;
+            width: 725px;
+            color: rgb(163, 121, 121);
+            min-height: 100px;
+            margin: 0 auto;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .currency-information h4 {
+            font-size: 20px;
+            width: 100%;
+            text-align: center;
+            margin: 0;
+            padding-bottom: 10px;
+        }
+
+        .currency-information span {
+            display: block;
+            padding: 5px 0;
+            text-align: center;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 44px;
+        }
+
+        form {
+            text-align: center;
+        }
+    </style>
+    <h1>This calculator converts currencies</h1>
+    <form name="value" method="post" action=".">
+
+        <label for="currency">Choose currency what you have: </label>
+        <select name="selected">
+
+            {% for value in values %}
+
+            <option name="value">{{value["currency"]}} {{value["bid"]}}</option>
+
+            {% endfor %}
+
+        </select>
+
+        <span class="item">→</span>
+
+        <label for="currency">Choose currency what you want to get:</label>
+
+        <select name="selected1">
+
+            {% for value in values %}
+
+            <option name="value1">{{value["currency"]}} {{value["bid"]}}</option>
+
+            {% endfor %}
+
+        </select>
+
+        <br><br>
+        <br><br>
+        <label>How much do you want to exchange() : </label>
+        <input name="how_much_U_wanna_exchange" type="text">
+        <br><br>
+        <br><br>
+        <input type="submit" value="Submit">
+
+    </form>
+
+
+    <div class="converter">
+        <span class="item" id="amount">{{currency_and_values_of_them}}</span>
+
+        <span class="item">→</span>
+
+        <span class="item" id="amount">{{currency_and_values_of_them1}}</span>
+    </div>
+
+
+    <div class="currency-information">
+        <span class="item" id="amount">Result</span>
+        <span class="item" id="amount">{{result_of_exchange}}</span>
+    </div>
+
+</body>
+
+</html>
